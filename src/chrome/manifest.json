@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "js": [
-        "accelerate.js"
+        "breezeads.js"
       ],
       "css": [
         "opacity.css"

@@ -33,12 +33,14 @@ function findAndInject() {
 }
 
 function byeAd() {
-
     const videoPlayer = document.getElementsByClassName("video-stream")[0];
     if (videoPlayer) {
         videoPlayer.muted = true;
-        videoPlayer.currentTime = videoPlayer.duration - 0.1;
-        videoPlayer.paused && videoPlayer.play()
+
+        if (isFinite(videoPlayer.duration)) {
+            videoPlayer.currentTime = videoPlayer.duration - 0.1;
+            videoPlayer.paused && videoPlayer.play()
+        }
     }
 
     // CLICK ON THE SKIP AD BTN
