@@ -16,7 +16,12 @@ ytd-ad-slot-renderer {
 }
 
 /* video side ad*/
-ytd-action-companion-ad-renderer{
+ytd-action-companion-ad-renderer {
+    opacity: 0.05 !important;
+    pointer-events: none !important;
+}
+
+ytd-image-companion-renderer {
     opacity: 0.05 !important;
     pointer-events: none !important;
 }
