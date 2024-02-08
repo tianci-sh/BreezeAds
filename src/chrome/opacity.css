@@ -1,0 +1,22 @@
+/* AD Still there :) */
+/* Homepage ad */
+ytd-display-ad-renderer {
+    opacity: 0.05 !important;
+    pointer-events: none !important;
+}
+
+ytd-video-display-full-buttoned-renderer {
+    opacity: 0.05 !important;
+    pointer-events: none !important;
+}
+
+ytd-ad-slot-renderer {
+    opacity: 0.05 !important;
+    pointer-events: none !important;
+}
+
+/* video side ad*/
+ytd-action-companion-ad-renderer{
+    opacity: 0.05 !important;
+    pointer-events: none !important;
+}

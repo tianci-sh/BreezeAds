@@ -10,7 +10,10 @@
   "content_scripts": [
     {
       "js": [
-        "content.js"
+        "accelerate.js"
+      ],
+      "css": [
+        "opacity.css"
       ],
       "matches": [
         "https://www.youtube.com/*"
