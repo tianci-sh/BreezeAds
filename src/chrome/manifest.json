@@ -16,7 +16,8 @@
         "opacity.css"
       ],
       "matches": [
-        "https://www.youtube.com/*"
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*"
       ]
     }
   ]
