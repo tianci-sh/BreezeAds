@@ -9,8 +9,9 @@ ytd-ad-slot-renderer {
 
 /* video side ad*/
 ytd-action-companion-ad-renderer,
-ytd-image-companion-renderer,
-ytd-engagement-panel-section-list-renderer {
+ytd-image-companion-renderer{
     opacity: 0.05 !important;
     pointer-events: none !important;
 }
+
+/* ytd-engagement-panel-section-list-renderer used by shorts command*/
