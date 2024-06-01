@@ -1,8 +1,9 @@
 window.onload = () => {
-    setTimeout(findAndInject, 100)
+    setTimeout(findVideoAndInject, 100)
+    setTimeout(findErrorScreenAndInject, 100)
 }
 
-function findAndInject() {
+function findVideoAndInject() {
     const videoContainer = document.getElementById("movie_player");
 
     const callback = function (mutationsList, observer) {
@@ -28,7 +29,32 @@ function findAndInject() {
         console.log('Inject Video Container')
     } else {
         console.log('Video Container Not Found')
-        setTimeout(findAndInject, 100)
+        setTimeout(findVideoAndInject, 100)
+    }
+}
+
+function findErrorScreenAndInject() {
+    const errorScreen = document.getElementById('error-screen');
+
+    const callback = function (mutationsList, observer) {
+        for (const mutation of mutationsList) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                location.reload();
+            }
+        }
+    };
+
+    if (errorScreen) {
+        const errorObserver = new MutationObserver(callback);
+        const errorConfig = {
+            childList: true
+        };
+
+        errorObserver.observe(errorScreen, errorConfig);
+        console.log('Observing Error Screen');
+    } else {
+        console.log('Error Screen Not Found');
+        setTimeout(findErrorScreenAndInject, 100);
     }
 }
 
