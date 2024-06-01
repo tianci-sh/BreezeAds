@@ -7,6 +7,11 @@
     "default_popup": "main.html",
     "default_icon": "logo.png"
   },
+  "icons": {
+    "128": "icons/icon-120x120.png",
+    "16": "icons/icon-16x16.png",
+    "48": "icons/icon-48x48.png"
+  },
   "content_scripts": [
     {
       "js": [
