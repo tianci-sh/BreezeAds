@@ -9,7 +9,8 @@ ytd-ad-slot-renderer {
 
 /* video side ad*/
 ytd-action-companion-ad-renderer,
-ytd-image-companion-renderer{
+ytd-image-companion-renderer,
+#player-ads{
     opacity: 0.05 !important;
     pointer-events: none !important;
 }
