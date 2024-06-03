@@ -1,92 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BreezeAds</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            width: 300px;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .header div {
-            display: flex;
-            align-items: center;
-        }
-
-        .header button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        .content {
-            margin-bottom: 20px;
-        }
-
-        .content h3 {
-            margin-bottom: 10px;
-        }
-
-        .content p {
-            font-size: 12px;
-        }
-
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            color: #888;
-        }
-
-        .footer a {
-            color: #000;
-            text-decoration: none;
-        }
-    </style>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>BreezeAds</title>
+	<link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet" />
 </head>
-<body>
-<div class="container">
-    <div class="header">
-        <div>
-            <h3>Breeze Ads</h3>
-        </div>
-        <div>
-            <button>🌟</button>
-            <button>🥰</button>
-            <button>🔲</button>
-        </div>
-    </div>
-    <div class="content">
-        <h3>Feature</h3>
-        <p>Skippable ad at the video's start, midway, or at the end.</p>
-        <p>Ads visible on the contents.</p>
-        <p>Support youtube music</p>
-        <p>Skip disable plugin waring</p>
-    </div>
-    <div class="footer">
-        <a target="_blank" href="https://github.com/tianci-sh/BreezeAds">✋ Issue</a>
-        <p>update at: 2024/06/02</p>
-    </div>
-</div>
+
+<body style="width: 400px">
+	<div class="max-w-sm mx-auto bg-white overflow-hidden">
+		<div class="px-6 py-4">
+			<div class="flex items-center justify-between">
+				<h2 class="text-2xl font-bold text-gray-800">Breeze Ads</h2>
+				<div class="flex space-x-2 text-xl">
+					<a class="cursor-pointer">🌟</a>
+					<a class="cursor-pointer">🥰</a>
+					<a class="cursor-pointer">🔲</a>
+				</div>
+			</div>
+			<hr class="my-4 border-gray-300" />
+			<div>
+				<h3 class="text-xl font-semibold text-gray-700">Feature</h3>
+				<ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+					<li>Skippable ad at the video's start, midway, or at the end.</li>
+					<li>Ads visible on the contents.</li>
+					<li>Support youtube music</li>
+					<li>Skip disable plugin warning</li>
+				</ul>
+			</div>
+			<div class="mt-6 flex items-center justify-between">
+				<a href="https://github.com/tianci-sh/BreezeAds" target="_blank"
+					class="text-yellow-500 text-lg hover:underline">🖐 Issue</a>
+				<span class="text-sm text-gray-500">update at: 2024/06/02</span>
+			</div>
+		</div>
+	</div>
 </body>
 <script src="content.js"></script>
 
