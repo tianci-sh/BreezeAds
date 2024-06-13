@@ -10,9 +10,14 @@ ytd-ad-slot-renderer {
 /* video side ad*/
 ytd-action-companion-ad-renderer,
 ytd-image-companion-renderer,
-#player-ads{
+#player-ads {
     opacity: 0.05 !important;
     pointer-events: none !important;
+}
+
+/* only hide e-commerce ad on video */
+#movie_player .ytp-featured-product {
+    display: none !important;
 }
 
 /* ytd-engagement-panel-section-list-renderer used by shorts command*/

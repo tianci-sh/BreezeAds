@@ -12,3 +12,4 @@ This extension effectively eliminates all categories of YouTube advertisements:
 - [x] Ads visible on the contents.
 - [x] Support youtube music
 - [x] Skip disable plugin waring
+- [x] Only hide e-commerce ad on video
