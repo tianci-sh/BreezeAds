@@ -1,7 +1,5 @@
-window.onload = () => {
-    setTimeout(findVideoAndInject, 100)
-    setTimeout(findErrorScreenAndInject, 100)
-}
+setTimeout(findVideoAndInject, 10)
+setTimeout(findErrorScreenAndInject, 10)
 
 function findVideoAndInject() {
     const videoContainer = document.getElementById("movie_player");
