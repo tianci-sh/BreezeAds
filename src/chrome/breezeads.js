@@ -1,3 +1,5 @@
+let executeByeAdTime = false;
+
 setTimeout(findVideoAndInject, 10)
 setTimeout(findErrorScreenAndInject, 10)
 
@@ -8,8 +10,9 @@ function findVideoAndInject() {
         for (const mutation of mutationsList) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const target = mutation.target;
-                if (target.classList.contains('ad-showing') || target.classList.contains('ad-interrupting')) {
-                    byeAd()
+                if ((target.classList.contains('ad-showing') || target.classList.contains('ad-interrupting')) && (Date.now() - executeByeAdTime > 100)) {
+                    executeByeAdTime = Date.now();
+                    byeAd();
                 }
             }
         }
@@ -57,17 +60,34 @@ function findErrorScreenAndInject() {
 }
 
 function byeAd() {
+    console.log('run')
     const videoPlayer = document.getElementsByClassName("video-stream")[0];
     if (videoPlayer) {
         videoPlayer.muted = true;
 
         if (isFinite(videoPlayer.duration)) {
-            videoPlayer.currentTime = videoPlayer.duration - 0.1;
-            videoPlayer.paused && videoPlayer.play()
+            if (videoPlayer.duration <= 60) {
+                videoPlayer.playbackRate = 4;
+            } else {
+                videoPlayer.playbackRate = 16;
+            }
         }
     }
 
-    // CLICK ON THE SKIP AD BTN
-    document.querySelector(".ytp-ad-skip-button")?.click();
-    document.querySelector(".ytp-ad-skip-button-modern")?.click();
+    clickSkipButton();
+}
+
+function clickSkipButton() {
+    Array.from(document.querySelectorAll('button')).filter(button =>
+        button.id.includes('skip-button')
+    ).forEach((button) => {
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        console.log(`Button: ${button.id}, X: ${x}, Y: ${y}`);
+
+        if (x && y && x > 0 && y > 0) {
+            chrome.runtime.sendMessage({command: "skipAd", x, y});
+        }
+    });
 }

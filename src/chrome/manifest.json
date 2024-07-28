@@ -7,6 +7,13 @@
     "default_popup": "main.html",
     "default_icon": "logo.png"
   },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "permissions": [
+    "activeTab",
+    "debugger"
+  ],
   "icons": {
     "128": "icons/icon-120x120.png",
     "16": "icons/icon-16x16.png",
