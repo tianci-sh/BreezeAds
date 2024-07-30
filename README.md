@@ -13,3 +13,7 @@ This extension effectively eliminates all categories of YouTube advertisements:
 - [x] Support youtube music
 - [x] Skip disable plugin waring
 - [x] Only hide e-commerce ad on video
+
+## Demo
+* speedup ad && auto skip
+![Demo GIF](./2024_7_30_demo.gif)
