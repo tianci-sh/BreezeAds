@@ -60,7 +60,9 @@ function findErrorScreenAndInject() {
 }
 
 function byeAd() {
-    console.log('run')
+    // Service worker lifetime is only 30 seconds to 5 minutes.
+    chrome.runtime.sendMessage({command: "wakeup"});
+
     const videoPlayer = document.getElementsByClassName("video-stream")[0];
     if (videoPlayer) {
         videoPlayer.muted = true;

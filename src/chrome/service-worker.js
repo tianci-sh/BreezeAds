@@ -1,9 +1,5 @@
 console.log("Background service worker is running");
-
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log('receive')
-    console.log(sender.tab.id)
-
     if (request.command === "skipAd") {
         chrome.debugger.attach({tabId: sender.tab.id}, "1.3", () => {
             console.log('start click left')
@@ -31,5 +27,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 });
             });
         });
+    } else if (request.command === 'wakeup') {
+        console.log(`wakeup`);
     }
 });
