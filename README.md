@@ -10,9 +10,10 @@ This extension effectively eliminates all categories of YouTube advertisements:
 
 - [x] Skippable ad at the video's start, midway, or at the end.
 - [x] Ads visible on the contents.
-- [x] Support youtube music
-- [x] Skip disable plugin waring
-- [x] Only hide e-commerce ad on video
+- [x] Support youtube music.
+- [x] Skip disable plugin waring.
+- [x] Only hide e-commerce ad on video.
+- [x] Darken the ads in the video a bit.
 
 ## Demo
 * speedup ad && auto skip

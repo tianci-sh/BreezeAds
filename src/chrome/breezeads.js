@@ -10,9 +10,17 @@ function findVideoAndInject() {
         for (const mutation of mutationsList) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 const target = mutation.target;
-                if ((target.classList.contains('ad-showing') || target.classList.contains('ad-interrupting')) && (Date.now() - executeByeAdTime > 100)) {
-                    executeByeAdTime = Date.now();
-                    byeAd();
+                if ((target.classList.contains('ad-showing') || target.classList.contains('ad-interrupting'))) {
+                    if (Date.now() - executeByeAdTime > 100) {
+                        executeByeAdTime = Date.now();
+
+                        // Darken the ads in the video a bit.
+                        target.style.filter = `brightness(0.5)`
+                        byeAd();
+                    }
+                } else {
+                    // After ads end
+                    target.style.filter = `brightness(1)`
                 }
             }
         }
