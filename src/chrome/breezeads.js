@@ -1,4 +1,6 @@
+const INTERVAL = 100;
 let executeByeAdTime = false;
+let byAdInterval;
 
 setTimeout(findVideoAndInject, 10)
 setTimeout(findErrorScreenAndInject, 10)
@@ -16,11 +18,15 @@ function findVideoAndInject() {
 
                         // Darken the ads in the video a bit.
                         target.style.filter = `brightness(0.5)`
-                        byeAd();
+                        if (!byAdInterval) {
+                            byAdInterval = setInterval(() => byeAd(), INTERVAL)
+                        }
                     }
                 } else {
                     // After ads end
                     target.style.filter = `brightness(1)`
+                    clearInterval(byAdInterval)
+                    byAdInterval = null;
                 }
             }
         }
@@ -35,9 +41,9 @@ function findVideoAndInject() {
         };
 
         observer.observe(videoContainer, config);
-        console.log('Inject Video Container')
+        print('Inject Video Container')
     } else {
-        console.log('Video Container Not Found')
+        print('Video Container Not Found')
         setTimeout(findVideoAndInject, 100)
     }
 }
@@ -60,9 +66,9 @@ function findErrorScreenAndInject() {
         };
 
         errorObserver.observe(errorScreen, errorConfig);
-        console.log('Observing Error Screen');
+        print('Observing Error Screen');
     } else {
-        console.log('Error Screen Not Found');
+        print('Error Screen Not Found');
         setTimeout(findErrorScreenAndInject, 100);
     }
 }
@@ -74,30 +80,36 @@ function byeAd() {
     const videoPlayer = document.getElementsByClassName("video-stream")[0];
     if (videoPlayer) {
         videoPlayer.muted = true;
-
+        print(`duration => ${videoPlayer.duration}`)
+        // videoPlayer.currentTime = videoPlayer.duration - 1;
         if (isFinite(videoPlayer.duration)) {
-            if (videoPlayer.duration <= 60) {
+            if (videoPlayer.duration <= 15) {
+                videoPlayer.playbackRate = 3;
+            } else if (videoPlayer.duration <= 60) {
                 videoPlayer.playbackRate = 4;
             } else {
                 videoPlayer.playbackRate = 16;
             }
         }
     }
-
-    clickSkipButton();
+    clickSkipButton(videoPlayer)
 }
 
-function clickSkipButton() {
+function clickSkipButton(videoPlayer) {
     Array.from(document.querySelectorAll('button')).filter(button =>
         button.id.includes('skip-button')
     ).forEach((button) => {
         const rect = button.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
-        console.log(`Button: ${button.id}, X: ${x}, Y: ${y}`);
+        print(`Button: ${button.id}, X: ${x}, Y: ${y}`);
 
         if (x && y && x > 0 && y > 0) {
             chrome.runtime.sendMessage({command: "skipAd", x, y});
         }
     });
+}
+
+function print(message) {
+    console.log(`[ BreezeAds ] ${message}`)
 }
