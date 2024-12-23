@@ -25,9 +25,12 @@ function findVideoAndInject() {
                 } else {
                     // After ads end
                     target.style.filter = `brightness(1)`
-                    clearInterval(byAdInterval)
-                    byAdInterval = null;
-                    setVideoPlayerToOriginState()
+
+                    if(byAdInterval){
+                        clearInterval(byAdInterval)
+                        setVideoPlayerToOriginState()
+                        byAdInterval = null;
+                    }
                 }
             }
         }
