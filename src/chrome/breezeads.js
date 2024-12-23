@@ -27,6 +27,7 @@ function findVideoAndInject() {
                     target.style.filter = `brightness(1)`
                     clearInterval(byAdInterval)
                     byAdInterval = null;
+                    setVideoPlayerToOriginState()
                 }
             }
         }
@@ -93,6 +94,16 @@ function byeAd() {
         }
     }
     clickSkipButton(videoPlayer)
+}
+
+function setVideoPlayerToOriginState() {
+    chrome.runtime.sendMessage({command: "wakeup"});
+
+    const videoPlayer = document.getElementsByClassName("video-stream")[0];
+    if (videoPlayer) {
+        videoPlayer.muted = false;
+        videoPlayer.playbackRate = 1;
+    }
 }
 
 function clickSkipButton(videoPlayer) {
