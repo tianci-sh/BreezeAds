@@ -105,7 +105,7 @@ function setVideoPlayerToOriginState() {
     const videoPlayer = document.getElementsByClassName("video-stream")[0];
     if (videoPlayer) {
         videoPlayer.muted = false;
-        videoPlayer.playbackRate = 1;
+        videoPlayer.playbackRate = Number(JSON.parse(sessionStorage.getItem("yt-player-playback-rate")).data) || 1;
     }
 }
 
