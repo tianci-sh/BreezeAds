@@ -26,7 +26,7 @@ function findVideoAndInject() {
                     // After ads end
                     target.style.filter = `brightness(1)`
 
-                    if(byAdInterval){
+                    if (byAdInterval) {
                         clearInterval(byAdInterval)
                         setVideoPlayerToOriginState()
                         byAdInterval = null;
@@ -87,7 +87,9 @@ function byeAd() {
         print(`duration => ${videoPlayer.duration}`)
         // videoPlayer.currentTime = videoPlayer.duration - 1;
         if (isFinite(videoPlayer.duration)) {
-            if (videoPlayer.duration <= 15) {
+            if (videoPlayer.duration <= 6) {
+                videoPlayer.playbackRate = 1.5
+            } else if (videoPlayer.duration <= 15) {
                 videoPlayer.playbackRate = 3;
             } else if (videoPlayer.duration <= 60) {
                 videoPlayer.playbackRate = 4;
