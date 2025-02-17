@@ -53,7 +53,7 @@ function findVideoAndInject() {
 }
 
 function findErrorScreenAndInject() {
-    const errorScreen = document.getElementById('error-screen');
+    const errorScreenContainer = document.getElementById('full-bleed-container');
 
     const callback = function (mutationsList, observer) {
         for (const mutation of mutationsList) {
@@ -63,18 +63,26 @@ function findErrorScreenAndInject() {
         }
     };
 
-    if (errorScreen) {
-        const errorObserver = new MutationObserver(callback);
-        const errorConfig = {
-            childList: true
-        };
-
-        errorObserver.observe(errorScreen, errorConfig);
-        print('Observing Error Screen');
-    } else {
+    if (!errorScreenContainer) {
         print('Error Screen Not Found');
         setTimeout(findErrorScreenAndInject, 100);
+        return;
     }
+    const errorScreen = errorScreenContainer.querySelector('#error-screen');
+
+    if (!errorScreen) {
+        print('Error Screen Not Found');
+        setTimeout(findErrorScreenAndInject, 100);
+        return;
+    }
+
+    const errorObserver = new MutationObserver(callback);
+    const errorConfig = {
+        childList: true
+    };
+
+    errorObserver.observe(errorScreen, errorConfig);
+    print('Observing Error Screen');
 }
 
 function byeAd() {

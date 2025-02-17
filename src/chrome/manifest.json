@@ -1,7 +1,7 @@
 {
   "name": "Breeze Ads: Friendly Adblock for Youtube™",
   "description": "Let's make peace with ads, we loved ad :)",
-  "version": "1.15",
+  "version": "1.17",
   "manifest_version": 3,
   "action": {
     "default_popup": "main.html",
