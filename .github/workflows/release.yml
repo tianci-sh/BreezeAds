@@ -13,7 +13,9 @@ jobs:
           ref: ${{ github.event.release.tag_name }}
 
       - name: Zip Chrome Extension
-        run: zip -r BreezeAds_chrome_${{ github.event.release.tag_name }}.zip src/chrome
+        run: |
+          cd src/chrome
+          zip -r BreezeAds_chrome_${{ github.event.release.tag_name }}.zip .
 
       - name: Upload Release Asset
         if: startsWith(github.ref, 'refs/tags/')
