@@ -93,16 +93,11 @@ function byeAd() {
     if (videoPlayer) {
         videoPlayer.muted = true;
         print(`duration => ${videoPlayer.duration}`)
-        // videoPlayer.currentTime = videoPlayer.duration - 1;
-        if (isFinite(videoPlayer.duration)) {
-            if (videoPlayer.duration <= 6) {
-                videoPlayer.playbackRate = 1.5
-            } else if (videoPlayer.duration <= 15) {
-                videoPlayer.playbackRate = 3;
-            } else if (videoPlayer.duration <= 60) {
-                videoPlayer.playbackRate = 4;
-            } else {
-                videoPlayer.playbackRate = 16;
+
+        if (videoPlayer.currentTime >= 1.5) {
+            // videoPlayer.currentTime = videoPlayer.duration - 1;
+            if (isFinite(videoPlayer.duration)) {
+                videoPlayer.playbackRate = Math.max(1.5, Math.min(videoPlayer.duration / 6, 16));
             }
         }
     }
